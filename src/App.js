@@ -11,6 +11,7 @@ import Post from './Components/Post';
 import Profile from './Components/Profile';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './css/icomoon/style.css';
 import './css/style.scss';
 import logo from './logo.svg';
 
@@ -19,7 +20,7 @@ class App extends Component {
     return (
       <main>
         <Header />
-        <img src={logo} className="App-logo" alt="logo" />
+        <h1><img src={logo} className="App-logo" alt="logo" /></h1>
 
         <SingIn />
         <SingUp />

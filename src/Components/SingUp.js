@@ -8,7 +8,7 @@ class SignUp extends Component{
           <h2>Registro</h2>
           <div className="form-group">
             <label 
-              for="name">Nombre</label>
+              htmlFor="name">Nombre</label>
             <input 
               type="text"
               name="name"
@@ -18,7 +18,7 @@ class SignUp extends Component{
           </div>
           <div className="form-group">
             <label 
-              for="lastname">Apellido</label>
+              htmlFor="lastname">Apellido</label>
             <input 
               type="text"
               name="lastname"
@@ -28,7 +28,7 @@ class SignUp extends Component{
           </div>
           <div className="form-group">
             <label 
-              for="email">Correo</label>
+              htmlFor="email">Correo</label>
             <input 
               type="email"
               name="email"
@@ -38,7 +38,7 @@ class SignUp extends Component{
           </div>
           <div className="form-group">
             <label 
-              for="password">Clave</label>
+              htmlFor="password">Clave</label>
             <input 
               type="password"
               name="password"
@@ -48,7 +48,7 @@ class SignUp extends Component{
           </div>
           <div className="form-group">
             <label 
-              for="confirmPassword">Confirmar clave
+              htmlFor="confirmPassword">Confirmar clave
             </label>
             <input 
               type="password"

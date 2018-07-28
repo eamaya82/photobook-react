@@ -7,11 +7,16 @@ class PasswordRecovery extends Component{
           <form className="form">
             <h2>Recuperar clave</h2>
             <div className="form-group">
-              <input
-                type="email"
-                name="email"
-                className="form-control"
-                placeholder="email" />
+              <div className="input-group">
+                <div className="input-group-prepend">
+                  <span className="input-group-text icon-envelope-o"></span>
+                </div>
+                <input
+                 type="email"
+                 name="email"
+                 className="form-control"
+                 placeholder="email" />
+              </div>
             </div>
             <div className="form-group">
               <button
@@ -19,7 +24,6 @@ class PasswordRecovery extends Component{
                 >Enviar</button>
             </div>
           </form>
-
       </section>
     )
   }

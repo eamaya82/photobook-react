@@ -1,0 +1,41 @@
+footer{
+  background:#007bff;
+  padding:30px;
+  ul.social{
+    @include reset();
+    li{
+      display:inline;
+      list-style-type: none;
+      margin-right: 20px;
+      a{
+        color:#FFF;
+        font-size: 32px;
+        transition: all 1s ease
+      }
+      a:hover{
+        color:#FFF;
+        opacity: 0.5;
+        text-decoration: none
+      }
+    }
+  }
+   h2{
+    color:#FFF;
+  }
+  p{
+    color:#FFF;
+  }
+  ul.links{
+    margin-left:0;
+    padding-left: 0;
+    li{
+      margin-left:0;
+      padding-left: 0;
+      list-style-type: none;
+      a{
+        color:#FFF;
+        font-size: 12px;
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+.profile{
+  margin:0 auto;
+  width: 400px;
+  h2{
+   }
+  ul{
+    @include reset();
+    display:flex;
+    flex-wrap: wrap;
+    li{
+      @include reset();
+      list-style-type: none;
+      margin-right:12px;
+    }
+  }
+}

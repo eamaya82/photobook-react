@@ -1,21 +1,27 @@
-
-section.timeline{
+.timeline{
   margin:0 auto;
-  width: 40%;
-}
-section.timeline h2{
-  
-}
-section.timeline figure{
-  
-}
-section.timeline p.like{
-  font-size: 12px;
-}
-section.timeline p.desc{
-  font-size: 20px;
-}
-section.timeline p.date{
-  color:#555;
-  font-size: 10px;
+  width: 400px;
+  .like{
+    font-size: 12px;
+  }
+  .desc{
+    font-size: 20px;
+  }
+  .date{
+    color:#555;
+    font-size: 10px;
+  }
+  ul{
+    li{
+      @include reset();
+      font-size: 14px;
+      list-style-type: none;
+      .comment-user{
+        font-weight: bold;
+      }
+      .comment-date{
+        color:#AAA;
+      }
+    }
+  }
 }

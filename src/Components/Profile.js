@@ -3,8 +3,8 @@ import React,{Component} from 'react'
 class Profile extends Component{
   render(){
     return (
-      <section>
-        <h2>nombreUsuario</h2>
+      <section className="profile">
+        <h2><i className="icon-user"></i> nombreUsuario</h2>
         <ul>
           <li>
             <article>

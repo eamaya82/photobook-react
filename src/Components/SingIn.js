@@ -7,18 +7,28 @@ class SignIn extends Component{
         <form className="form">
           <h2>Ingreso</h2>
           <div className="form-group">
-            <input 
-              type="email" 
-              name="email" 
-              className="form-control"
-              placeholder="Email" />
+            <div className="input-group">
+              <div className="input-group-prepend">
+                <span className="input-group-text icon-envelope-o"></span>
+              </div>
+              <input 
+                type="email" 
+                name="email" 
+                className="form-control"
+                placeholder="Email" />
+            </div>
           </div>
-          <div className="form-group">    
-            <input 
+          <div className="form-group">
+            <div className="input-group">
+              <div className="input-group-prepend">
+                <span className="input-group-text icon-key"></span>
+              </div>
+              <input 
               type="password" 
               name="password" 
               className="form-control"
               placeholder="password" />
+            </div>
           </div>
           <div className="form-group">
             <button

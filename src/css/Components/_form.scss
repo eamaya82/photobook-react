@@ -1,19 +1,18 @@
-.form {
-  border: 1px solid #999;
-  border-radius: 10px;
+.form{
+  border:1px solid #999;
+  border-radius:10px;
   box-sizing: content-box;
-  padding: 50px 20px;
-  width: 250px;
-  margin: 0 auto
-}
-.form h2{
-  font-size: 16px;
-  text-align: center
-}
-.form p{
-  text-align: center
-}
-.form .row .col{
-  padding: 0;
-  text-align: center
+  margin: 0 auto;
+  padding:50px 20px;
+  width:250px;
+  h2{
+    font-size: 16px;
+    text-align: center
+  }
+  p{
+    text-align: center
+  }
+  .row .col{
+    padding: 0
+  }
 }
