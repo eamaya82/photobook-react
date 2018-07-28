@@ -19,10 +19,12 @@ class SignIn extends Component{
               name="password" 
               class="form-control"
               placeholder="password" />
-          </div>    
-          <button
-            class="btn btn-primary"
-            >Enviar</button>
+          </div>
+          <div class="form-group">
+            <button
+              class="btn btn-primary"
+              >Enviar</button>
+          </div>
           <p>
             <a href="#">Registro</a> 
             |

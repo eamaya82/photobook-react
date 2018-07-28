@@ -6,52 +6,71 @@ class SignUp extends Component{
       <section>
         <form>
           <h2>Registro</h2>
-          <label 
-            for="name">Nombre</label>
-          <input 
-            type="text"
-            name="name"
-            id="name"
-          />
-          <label 
-            for="lastname">Apellido</label>
-          <input 
-            type="text"
-            name="lastname"
-            id="lastname"
-          />
-          <label 
-            for="email">Correo</label>
-          <input 
-            type="email"
-            name="email"
-            id="email"
-          />
-          <label 
-            for="password">Clave</label>
-          <input 
-            type="password"
-            name="password"
-            id="password"
-          />
-          <label 
-            for="confirmPassword">Confirmar clave
-          </label>
-          <input 
-            type="password"
-            name="confirmPassword"
-            id="confirmPassword"
-          />
-          
-          <label>
+          <div class="form-group">
+            <label 
+              for="name">Nombre</label>
             <input 
-              type="checkbox"
-              name="terms"
+              type="text"
+              name="name"
+              id="name"
+              class="form-control"
             />
-            Acepto términos y condiciones
-          </label>
-          
-          <button>Enviar</button>
+          </div>
+          <div class="form-group">
+            <label 
+              for="lastname">Apellido</label>
+            <input 
+              type="text"
+              name="lastname"
+              id="lastname"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <label 
+              for="email">Correo</label>
+            <input 
+              type="email"
+              name="email"
+              id="email"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <label 
+              for="password">Clave</label>
+            <input 
+              type="password"
+              name="password"
+              id="password"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <label 
+              for="confirmPassword">Confirmar clave
+            </label>
+            <input 
+              type="password"
+              name="confirmPassword"
+              id="confirmPassword"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <label>
+              <input 
+                type="checkbox"
+                name="terms"
+              />
+              Acepto términos y condiciones
+            </label>
+          </div>
+          <div class="form-group">
+            <button
+            class="btn btn-primary"
+            >Enviar</button>
+          </div>
 
         </form>
       </section>

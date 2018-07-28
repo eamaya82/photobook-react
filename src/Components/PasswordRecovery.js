@@ -6,11 +6,18 @@ class PasswordRecovery extends Component{
       <section>
           <form>
             <h2>Recuperar clave</h2>
-            <input
-              type="email"
-              name="email"
-              placeholder="email" />
-            <button>Enviar</button>
+            <div class="form-group">
+              <input
+                type="email"
+                name="email"
+                class="form-control"
+                placeholder="email" />
+            </div>
+            <div class="form-group">
+              <button
+                class="btn btn-primary"
+                >Enviar</button>
+            </div>
           </form>
 
       </section>
