@@ -1,0 +1,21 @@
+
+section.timeline{
+  margin:0 auto;
+  width: 40%;
+}
+section.timeline h2{
+  
+}
+section.timeline figure{
+  
+}
+section.timeline p.like{
+  font-size: 12px;
+}
+section.timeline p.desc{
+  font-size: 20px;
+}
+section.timeline p.date{
+  color:#555;
+  font-size: 10px;
+}
