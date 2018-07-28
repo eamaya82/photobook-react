@@ -10,6 +10,7 @@ import TimeLine from './Components/TimeLine';
 import Post from './Components/Post';
 import Profile from './Components/Profile';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from './logo.svg';
 
 class App extends Component {

@@ -6,15 +6,23 @@ class SignIn extends Component{
       <section>
         <form>
           <h2>Ingreso</h2>
-          <input 
-            type="email" 
-            name="email" 
-            placeholder="Email" />
-          <input 
-            type="password" 
-            name="password" 
-            placeholder="password" />
-          <button>Enviar</button>
+          <div class="form-group">
+            <input 
+              type="email" 
+              name="email" 
+              class="form-control"
+              placeholder="Email" />
+          </div>
+          <div class="form-group">    
+            <input 
+              type="password" 
+              name="password" 
+              class="form-control"
+              placeholder="password" />
+          </div>    
+          <button
+            class="btn btn-primary"
+            >Enviar</button>
           <p>
             <a href="#">Registro</a> 
             |
