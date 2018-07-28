@@ -4,7 +4,7 @@ class SignUp extends Component{
   render(){
     return (
       <section>
-        <form>
+        <form class="form">
           <h2>Registro</h2>
           <div class="form-group">
             <label 
@@ -68,8 +68,8 @@ class SignUp extends Component{
           </div>
           <div class="form-group">
             <button
-            class="btn btn-primary"
-            >Enviar</button>
+            class="btn btn-success btn-block"
+            >Registro</button>
           </div>
 
         </form>

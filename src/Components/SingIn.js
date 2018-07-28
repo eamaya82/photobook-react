@@ -4,7 +4,7 @@ class SignIn extends Component{
   render(){
     return (
       <section>
-        <form>
+        <form class="form">
           <h2>Ingreso</h2>
           <div class="form-group">
             <input 
@@ -22,13 +22,16 @@ class SignIn extends Component{
           </div>
           <div class="form-group">
             <button
-              class="btn btn-primary"
-              >Enviar</button>
+              class="btn btn-success btn-block"
+              >Log In</button>
           </div>
-          <p>
-            <a href="#">Registro</a> 
-            |
-            <a href="#">Olvido de clave</a>
+          <p class="row">
+            <span class="col">
+              <a href="#">Registro</a> 
+            </span>
+            <span class="col">
+              <a href="#">Olvido de clave</a>
+            </span>
           </p>
      </form>
       </section>

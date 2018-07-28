@@ -4,7 +4,7 @@ class PasswordRecovery extends Component{
   render(){
     return (
       <section>
-          <form>
+          <form class="form">
             <h2>Recuperar clave</h2>
             <div class="form-group">
               <input
@@ -15,7 +15,7 @@ class PasswordRecovery extends Component{
             </div>
             <div class="form-group">
               <button
-                class="btn btn-primary"
+                class="btn btn-success btn-block"
                 >Enviar</button>
             </div>
           </form>
