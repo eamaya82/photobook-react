@@ -1,6 +1,13 @@
 import React,{Component} from 'react'
 
 class NewPost extends Component{
+  constructor(){
+    super();
+    this.hideNewPost = this.hideNewPost.bind(this)
+  }
+  hideNewPost(){
+    this.props.showNewPost(false)
+  }
   render(){
     
     return (
@@ -41,7 +48,7 @@ class NewPost extends Component{
                 <button className="btn btn-block btn-success">Enviar</button>
               </div>
               <div className="col-5">
-                <button type="button" onClick={this.props.hideNewPost} className="btn btn-block btn-danger">Cancelar</button>
+                <button type="button" onClick={this.hideNewPost} className="btn btn-block btn-danger">Cancelar</button>
               </div>
             </div>  
         </form>

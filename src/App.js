@@ -26,37 +26,31 @@ class App extends Component {
         showNewPost: false
     }
     this.showNewPost = this.showNewPost.bind(this)
-    this.hideNewPost = this.hideNewPost.bind(this)
-    this.doLogOut = this.doLogOut.bind(this)
+    this.login = this.login.bind(this)
   }
-  showNewPost(){
+  showNewPost = show => {
     this.setState({
-      showNewPost: true
+      showNewPost:show
     }) 
   }
-  hideNewPost(){
+
+  login = isAuth => {
     this.setState({
-      showNewPost: false
+      isAuth: isAuth
     })
-  }
-  doLogOut(){
-    this.setState({
-      isAuth: false
-    })
-    window.location = '/'
   }
 
   render() {
     return (
-      <BrowserRouter>
-      <main>
-        <Header isAuth={this.state.isAuth} showNewPost={this.showNewPost} doLogOut={this.doLogOut} />
+        <BrowserRouter>
+        <main>
+        <Header isAuth={this.state.isAuth} showNewPost={this.showNewPost} login={this.login} />
         {
           !this.state.isAuth ?
             <div>
               <h1><img src={logo} className="App-logo" alt="logo" /></h1>
               <Switch>
-                <Route exact path="/" component={SignIn} />
+                <Route exact path="/" component={() => <SignIn login={this.login} />} />
                 <Route path="/signup" component={SignUp} />
                 <Route path="/passwordRecovery" component={PasswordRecovery} />
               </Switch>
@@ -65,7 +59,7 @@ class App extends Component {
             <div>
               { 
                 this.state.showNewPost &&
-                  <NewPost hideNewPost={this.hideNewPost} />
+                  <NewPost showNewPost={this.showNewPost} />
               }
               <Switch>
                 <Route exact path="/" component={Timeline} />
@@ -77,7 +71,7 @@ class App extends Component {
         }
         <Footer /> 
       </main>
-      </BrowserRouter> 
+        </BrowserRouter> 
     );
   }
 }

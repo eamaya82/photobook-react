@@ -1,5 +1,6 @@
 import React,{Component} from 'react'
 import {Link} from 'react-router-dom'
+import {login} from './../services/firebase'
 
 class SignIn extends Component{
 
@@ -14,8 +15,23 @@ class SignIn extends Component{
   }
   handleSubmit(e){
     e.preventDefault();
-    console.log(this.state.email)
-    console.log(this.state.password)
+    const user = {
+      email: this.state.email,
+      password: this.state.password,
+      error: false
+    }
+    login(user)
+    .then(()=>{
+      this.setState({
+        error:false
+      })
+      this.props.login(true)
+    })
+    .catch(error=>{
+      this.setState({
+        error:true
+      })
+    })
   }
   handleChange(e){
     this.setState({
@@ -27,6 +43,12 @@ class SignIn extends Component{
       <section>
         <form className="form" onSubmit={this.handleSubmit}>
           <h2>Ingreso</h2>
+          {
+            this.state.error &&
+            <div className="alert alert-danger" role="alert">
+              Ocurrió un error de autenticación
+            </div>
+          }
           <div className="form-group">
             <div className="input-group">
               <div className="input-group-prepend">
