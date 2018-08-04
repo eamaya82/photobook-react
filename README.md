@@ -11,3 +11,12 @@ Install dependencies
 Run
 
 `npm start`
+
+#.env
+Create .env file for Firebase vbles
+REACT_APP_APIKEY=
+REACT_APP_AUTHDOMAIN=
+REACT_APP_DATABASEURL=
+REACT_APP_PROJECTID=
+REACT_APP_STORAGEBUCKET=
+REACT_APP_MESSAGINSENDERID=

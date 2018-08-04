@@ -7,10 +7,11 @@ const config = {
   projectId: process.env.REACT_APP_PROJECTID,
   storageBucket: process.env.REACT_APP_STORAGEBUCKET,
   messagingSenderId: process.env.REACT_APP_MESSAGINSENDERID
-};
-firebase.initializeApp(config);
+}
+firebase.initializeApp(config)
 
-const authentication = firebase.auth();
+const authentication = firebase.auth()
+const storage = firebase.storage()
 
 export function login(user){
     return authentication.signInWithEmailAndPassword(user.email, user.password)
@@ -26,3 +27,6 @@ export let isAuth = new Promise((resolve, reject) => {
      return resolve(!!user)
   })
 });
+export function upload(file){
+    return storage.ref('/imagenes').child(file.name).put(file)
+}
