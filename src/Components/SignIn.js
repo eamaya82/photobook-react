@@ -1,4 +1,5 @@
 import React,{Component} from 'react'
+import {Link} from 'react-router-dom'
 
 class SignIn extends Component{
   render(){
@@ -9,7 +10,7 @@ class SignIn extends Component{
           <div className="form-group">
             <div className="input-group">
               <div className="input-group-prepend">
-                <span className="input-group-text icon-envelope-o"></span>
+                <i className="input-group-text" id="inputGroupPrepend2">@</i>
               </div>
               <input 
                 type="email" 
@@ -18,30 +19,30 @@ class SignIn extends Component{
                 placeholder="Email" />
             </div>
           </div>
-          <div className="form-group">
+          <div className="form-group"> 
             <div className="input-group">
               <div className="input-group-prepend">
-                <span className="input-group-text icon-key"></span>
-              </div>
+                <i className="input-group-text" id="inputGroupPrepend2">@</i>
+              </div>   
               <input 
-              type="password" 
-              name="password" 
-              className="form-control"
-              placeholder="password" />
-            </div>
-          </div>
-          <div className="form-group">
+                type="password" 
+                name="password" 
+                className="form-control"
+                placeholder="password" />
+            </div>  
+          </div>  
+          <div className="form-group">    
             <button
               className="btn btn-success btn-block"
-              >Log In</button>
+              >Ingresar</button>
           </div>
           <p className="row">
             <span className="col">
-              <a href="#">Registro</a> 
-            </span>
+              <Link to="signUp">Registro</Link>
+            </span>  
             <span className="col">
-              <a href="#">Olvido de clave</a>
-            </span>
+              <Link to="/passwordRecovery">Olvido de clave</Link>
+            </span>  
           </p>
      </form>
       </section>

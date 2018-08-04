@@ -1,0 +1,22 @@
+header{
+  .fixed-top, figure{
+    @include reset();
+  }
+  div a{
+   color: #FFF;
+   font-size: 20px;
+   margin: 0 0 0 20px;
+   text-decoration: none;
+   transition: all 1s;
+   .icon-user{
+     font-size: 28px;
+   }
+ }
+ div a:hover{
+   color: #AAA;
+   text-decoration: none;
+ }
+ nav{
+   height:80px
+ }
+ }

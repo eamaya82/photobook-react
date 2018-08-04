@@ -1,5 +1,6 @@
 footer{
   background:#007bff;
+  margin-top:50px; 
   padding:30px;
   ul.social{
     @include reset();
@@ -19,7 +20,8 @@ footer{
       }
     }
   }
-   h2{
+
+  h2{
     color:#FFF;
   }
   p{

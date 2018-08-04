@@ -1,23 +1,27 @@
 /*mixins*/
-  @mixin reset{
-    margin: 0;
-    padding:0
-  }
+@mixin reset{
+  margin:0;
+  padding:0
+}
 /*variables*/
-  $main-font-color: #555;
-/*tags*/
-  body{
-    color:$main-font-color;
-    padding-top: 80px
+$main-font-color:#555;
+/*tags*/    
+body{
+  color:$main-font-color;
+  padding-top:90px 
+}
+h1{
+  text-align: center;
+  img{
+    width: 170px
   }
-  h1{
-    text-align: center;
-    img{
-      width: 140px;
-    }
-  }
+}
+p{
+  @include reset();
+}
 
-  @import 'Components/footer';
-  @import 'Components/form';
-  @import 'Components/profile';
-  @import 'Components/timeline';
+@import 'Components/header';
+@import 'Components/footer';
+@import 'Components/form';
+@import 'Components/profile';
+@import 'Components/timeline';

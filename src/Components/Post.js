@@ -7,7 +7,7 @@ class Post extends Component{
       <article>
         <h2><i className="icon-user"></i>lorem ipsum</h2>
         <figure>
-          <img src="https://dummyimage.com/400x400/bfbfbf/fff" alt="imagen"/>
+          <img src="https://dummyimage.com/400x400/000/fff" alt="imagen"/>
         </figure>
         <section>
           <p className="like"><i className="icon-heart"></i> 10 Me gusta</p>
@@ -15,12 +15,18 @@ class Post extends Component{
           <p className="date">Dec 15, 2018</p>
         </section>
           <section>
-            <form>
-              <input 
-                type="text"
-                name="comment"
-                placeholder="Comentario"/>
-              <button>Enviar</button>
+            <form className="form-row">
+              <div className="col-10">
+                <input 
+                  type="text"
+                  name="comment"
+                  placeholder="Comentario"
+                  className="form-control"
+                  />
+              </div>
+              <div className="col-2">
+                <button className="btn btn-primary">Enviar</button>
+              </div>
             </form>
           </section>
             <ul>
