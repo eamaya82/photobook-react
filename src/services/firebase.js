@@ -21,3 +21,8 @@ export function logout(){
 export function signup(user){
     return authentication.createUserWithEmailAndPassword(user.email,user.password)
 }
+export let isAuth = new Promise((resolve, reject) => {
+  authentication.onAuthStateChanged(user=>{
+     return resolve(!!user)
+  })
+});

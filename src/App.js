@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
-
+import {logout, isAuth} from './services/firebase'
 import Header from './Components/Header'
 import Footer from './Components/Footer'
 
@@ -37,6 +37,17 @@ class App extends Component {
   login = isAuth => {
     this.setState({
       isAuth: isAuth
+    })
+    if(!isAuth) 
+      logout()
+  }
+
+  componentDidMount(){
+    isAuth
+    .then(user=>{
+      this.setState({
+        isAuth: user
+      })
     })
   }
 
