@@ -1,4 +1,5 @@
 import React,{Component} from 'react'
+import {Link} from 'react-router-dom'
 
 class SignUp extends Component{
   render(){
@@ -6,7 +7,7 @@ class SignUp extends Component{
       <section>
         <form className="form">
           <h2>Registro</h2>
-          <div className="form-group">
+          <div className="form-group">   
             <label 
               htmlFor="name">Nombre</label>
             <input 
@@ -16,7 +17,7 @@ class SignUp extends Component{
               className="form-control"
             />
           </div>
-          <div className="form-group">
+          <div className="form-group">   
             <label 
               htmlFor="lastname">Apellido</label>
             <input 
@@ -26,7 +27,7 @@ class SignUp extends Component{
               className="form-control"
             />
           </div>
-          <div className="form-group">
+          <div className="form-group">  
             <label 
               htmlFor="email">Correo</label>
             <input 
@@ -36,7 +37,7 @@ class SignUp extends Component{
               className="form-control"
             />
           </div>
-          <div className="form-group">
+          <div className="form-group">   
             <label 
               htmlFor="password">Clave</label>
             <input 
@@ -46,7 +47,7 @@ class SignUp extends Component{
               className="form-control"
             />
           </div>
-          <div className="form-group">
+          <div className="form-group">   
             <label 
               htmlFor="confirmPassword">Confirmar clave
             </label>
@@ -57,7 +58,8 @@ class SignUp extends Component{
               className="form-control"
             />
           </div>
-          <div className="form-group">
+          <div className="form-group">   
+          
             <label>
               <input 
                 type="checkbox"
@@ -66,12 +68,17 @@ class SignUp extends Component{
               Acepto términos y condiciones
             </label>
           </div>
-          <div className="form-group">
-            <button
-            className="btn btn-success btn-block"
-            >Registro</button>
+          <div className="form-group">            
+          <button
+              className="btn btn-success btn-block"
+              >Enviar</button>
           </div>
 
+          <p className="row">
+            <span className="col">
+              <Link to="/">Regresar</Link>
+            </span>   
+          </p>
         </form>
       </section>
     )

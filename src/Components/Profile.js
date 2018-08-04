@@ -1,4 +1,5 @@
 import React,{Component} from 'react'
+import {Link} from 'react-router-dom'
 
 class Profile extends Component{
   render(){
@@ -9,39 +10,68 @@ class Profile extends Component{
           <li>
             <article>
               <figure>
-                <img src="https://dummyimage.com/120x120/bfbfbf/fff" alt="imagen"/>
+                <Link to="post/5"><img src="https://dummyimage.com/120x120/000/fff" alt="imagen"/></Link>
               </figure>
             </article>
           </li>
           <li>
             <article>
               <figure>
-                <img src="https://dummyimage.com/120x120/bfbfbf/fff" alt="imagen"/>
+                <Link to="post/5"><img src="https://dummyimage.com/120x120/000/fff" alt="imagen"/></Link>
               </figure>
             </article>
           </li>
           <li>
             <article>
               <figure>
-                <img src="https://dummyimage.com/120x120/bfbfbf/fff" alt="imagen"/>
+                <Link to="post/5"><img src="https://dummyimage.com/120x120/000/fff" alt="imagen"/></Link>
               </figure>
             </article>
           </li>
           <li>
             <article>
               <figure>
-                <img src="https://dummyimage.com/120x120/bfbfbf/fff" alt="imagen"/>
+                <Link to="post/5"><img src="https://dummyimage.com/120x120/000/fff" alt="imagen"/></Link>
               </figure>
             </article>
           </li>
           <li>
             <article>
               <figure>
-                <img src="https://dummyimage.com/120x120/bfbfbf/fff" alt="imagen"/>
+                <Link to="post/5"><img src="https://dummyimage.com/120x120/000/fff" alt="imagen"/></Link>
+              </figure>
+            </article>
+          </li>
+          <li>
+            <article>
+              <figure>
+                <Link to="post/5"><img src="https://dummyimage.com/120x120/000/fff" alt="imagen"/></Link>
+              </figure>
+            </article>
+          </li>
+          <li>
+            <article>
+              <figure>
+                <Link to="post/5"><img src="https://dummyimage.com/120x120/000/fff" alt="imagen"/></Link>
               </figure>
             </article>
           </li>
         </ul>
+        <section>
+          <form className="form-row">
+            <div className="col-10">
+              <input 
+                type="text"
+                name="comment"
+                placeholder="Comentario"
+                className="form-control"
+                />
+            </div>
+            <div className="col-2">
+              <button className="btn btn-primary">Enviar</button>
+            </div>
+          </form>
+        </section>
       </section>
     )
   }

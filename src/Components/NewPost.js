@@ -2,6 +2,7 @@ import React,{Component} from 'react'
 
 class NewPost extends Component{
   render(){
+    
     return (
       <section className="timeline">      
         
@@ -40,7 +41,7 @@ class NewPost extends Component{
                 <button className="btn btn-block btn-success">Enviar</button>
               </div>
               <div className="col-5">
-                <button type="button" className="btn btn-block btn-danger">Cancelar</button>
+                <button type="button" onClick={this.props.hideNewPost} className="btn btn-block btn-danger">Cancelar</button>
               </div>
             </div>  
         </form>

@@ -11,12 +11,12 @@ class Header extends Component{
           this.props.isAuth &&
             <div className="container">
                   <h1><figure>
-                    <a href="#"><img src={logo} alt="Photobook" width="140px" /></a></figure>
-                  </h1>
+                    <Link to="/"><img src={logo} alt="Photobook" width="140px" /></Link></figure>
+                  </h1> 
                   <div>
-                    <Link to="/"><span className="icon-plus"></span></Link>
+                    <Link to="#" onClick={this.props.showNewPost}><span className="icon-plus"></span></Link>
                     <Link to="/profile"><span className="icon-user"></span>Username</Link>
-                    <Link to="/"><span className="icon-exit"></span></Link>
+                    <Link to="#" onClick={this.props.doLogOut}><span className="icon-sign-out"></span></Link>
                   </div>
             </div>
         }    

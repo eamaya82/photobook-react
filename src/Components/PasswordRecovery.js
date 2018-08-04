@@ -1,4 +1,5 @@
 import React,{Component} from 'react'
+import {Link} from 'react-router-dom'
 
 class PasswordRecovery extends Component{
   render(){
@@ -20,7 +21,7 @@ class PasswordRecovery extends Component{
           </div>
           <p className="row">
             <span className="col">
-              <a href="#">Regresar</a>
+              <Link to="/">Regresar</Link>
             </span>   
           </p>
           </form>

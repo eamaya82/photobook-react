@@ -2,10 +2,30 @@ import React,{Component} from 'react'
 import {Link} from 'react-router-dom'
 
 class SignIn extends Component{
+
+  constructor(){
+    super();
+    this.state = {
+      email: '',
+      password: ''
+    }
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+  handleSubmit(e){
+    e.preventDefault();
+    console.log(this.state.email)
+    console.log(this.state.password)
+  }
+  handleChange(e){
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
   render(){
     return (
       <section>
-        <form className="form">
+        <form className="form" onSubmit={this.handleSubmit}>
           <h2>Ingreso</h2>
           <div className="form-group">
             <div className="input-group">
@@ -16,7 +36,9 @@ class SignIn extends Component{
                 type="email" 
                 name="email" 
                 className="form-control"
-                placeholder="Email" />
+                placeholder="Email"
+                onChange={this.handleChange}
+                />
             </div>
           </div>
           <div className="form-group"> 
@@ -28,11 +50,14 @@ class SignIn extends Component{
                 type="password" 
                 name="password" 
                 className="form-control"
-                placeholder="password" />
+                placeholder="password"
+                onChange={this.handleChange}
+                 />
             </div>  
           </div>  
           <div className="form-group">    
             <button
+              type="submit"
               className="btn btn-success btn-block"
               >Ingresar</button>
           </div>

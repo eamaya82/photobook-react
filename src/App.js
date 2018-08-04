@@ -1,41 +1,56 @@
 import React, { Component } from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {BrowserRouter, Route, Switch} from 'react-router-dom'
 
-import Header from './Components/Header';
-import Footer from './Components/Footer';
+import Header from './Components/Header'
+import Footer from './Components/Footer'
 
-import SignIn from './Components/SignIn';
-import SignUp from './Components/SignUp';
-import PasswordRecovery from './Components/PasswordRecovery';
+import SignIn from './Components/SignIn'
+import SignUp from './Components/SignUp'
+import PasswordRecovery from './Components/PasswordRecovery'
 
-import NewPost from './Components/NewPost';
-import Timeline from './Components/Timeline';
-import Post from './Components/Post';
-import Profile from './Components/Profile';
+import NewPost from './Components/NewPost'
+import Timeline from './Components/Timeline'
+import Post from './Components/Post'
+import Profile from './Components/Profile'
 
-import "bootstrap/dist/css/bootstrap.min.css";
-import './css/icomoon/style.css';
-import './css/style.scss';
-import logo from './logo.svg';
+import "bootstrap/dist/css/bootstrap.min.css"
+import './css/icomoon/style.css'
+import './css/style.scss'
+import logo from './logo.svg'
 
 class App extends Component {
   constructor(){
     super();
     this.state = {
-        isAuth: true,
-        showNewPost: true
+        isAuth: false,
+        showNewPost: false
     }
+    this.showNewPost = this.showNewPost.bind(this)
+    this.hideNewPost = this.hideNewPost.bind(this)
+    this.doLogOut = this.doLogOut.bind(this)
+  }
+  showNewPost(){
+    this.setState({
+      showNewPost: true
+    }) 
   }
   hideNewPost(){
     this.setState({
       showNewPost: false
     })
   }
+  doLogOut(){
+    this.setState({
+      isAuth: false
+    })
+    window.location = '/'
+  }
+
   render() {
     return (
-        <BrowserRouter>
-        <main>
-        <Header isAuth={this.state.isAuth} />
+      <BrowserRouter>
+      <main>
+        <Header isAuth={this.state.isAuth} showNewPost={this.showNewPost} doLogOut={this.doLogOut} />
         {
           !this.state.isAuth ?
             <div>
@@ -62,7 +77,7 @@ class App extends Component {
         }
         <Footer /> 
       </main>
-        </BrowserRouter> 
+      </BrowserRouter> 
     );
   }
 }
