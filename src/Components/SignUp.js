@@ -1,6 +1,6 @@
 import React,{Component} from 'react'
-import {Link} from 'react-router-dom'
-import {signup} from './../services/firebase'
+import {Link, Redirect} from 'react-router-dom'
+import {signup, create} from './../services/firebase'
 
 class SignUp extends Component{
   constructor(){
@@ -12,7 +12,8 @@ class SignUp extends Component{
       password: '',
       confirmPassword: '',
       terms: '',
-      error:false
+      error:'',
+      isAuth: false
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -23,30 +24,36 @@ class SignUp extends Component{
       const user = {
         name: this.state.name,
         lastname: this.state.lastname,
-        email: this.state.email,
-        password: this.state.password
+        email: this.state.email
       }
-      signup(user)
+      signup({email: this.state.email,password: this.state.password})
       .then(()=>{
-        this.setState({
-          name: '',
-          lastname: '',
-          email: '',
-          password: '',
-          confirmPassword: '',
-          terms: '',
-          error:false
+        create('users',user)
+        .then(()=>{
+          this.setState({
+            name: '',
+            lastname: '',
+            email: '',
+            password: '',
+            confirmPassword: '',
+            terms: '',
+            error:'',
+            isAuth:true
+          })
+          this.props.login(true)
+          window.scrollTo(0,0)
         })
         
       })
       .catch(error=>{
+        console.log(error)
         this.setState({
-          error:true
+          error:'Ocurrió un error inesperado'
         })
       })
     }else{
       this.setState({
-        error:true
+        error:'Claves no coinciden'
       })
     }
     window.scrollTo(0, 0)
@@ -58,13 +65,17 @@ class SignUp extends Component{
   }
   render(){
     return (
-      <section>
+      <section> 
+        {
+          this.state.isAuth ?
+            <Redirect to="/" />
+        :  
         <form className="form" onSubmit={this.handleSubmit}>
           <h2>Registro</h2>
           {
             this.state.error &&
             <div className="alert alert-danger" role="alert">
-              Ocurrió un error de registro
+              {this.state.error}
             </div>
           }
           <div className="form-group">   
@@ -149,6 +160,7 @@ class SignUp extends Component{
             </span>   
           </p>
         </form>
+      }
       </section>
     )
   }

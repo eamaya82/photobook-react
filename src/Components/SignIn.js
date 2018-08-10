@@ -26,6 +26,7 @@ class SignIn extends Component{
         error:false
       })
       this.props.login(true)
+      window.scrollTo(0,0)
     })
     .catch(error=>{
       this.setState({

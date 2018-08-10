@@ -12,6 +12,7 @@ firebase.initializeApp(config)
 
 const authentication = firebase.auth()
 const storage = firebase.storage()
+const database = firebase.database()
 
 export function login(user){
     return authentication.signInWithEmailAndPassword(user.email, user.password)
@@ -26,7 +27,26 @@ export let isAuth = new Promise((resolve, reject) => {
   authentication.onAuthStateChanged(user=>{
      return resolve(!!user)
   })
-});
+})
+export let userInfo = new Promise((resolve, reject) => {
+    authentication.onAuthStateChanged(user=>{
+       return resolve(user)
+    })
+  });
 export function upload(file){
-    return storage.ref('/imagenes').child(file.name).put(file)
+    return storage.ref('/images').child(Date.now().toString()).put(file)
 }
+
+
+export function create(collection, obj){
+    return database.ref(collection).push(obj)
+} 
+export function remove(collection, id){
+    return database.ref(collection).child(id).remove()
+} 
+export function list(collection){
+    return database.ref(collection)
+} 
+export function read(collection, id){
+    return database.ref(collection+"/"+id)
+} 

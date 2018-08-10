@@ -62,7 +62,7 @@ class App extends Component {
               <h1><img src={logo} className="App-logo" alt="logo" /></h1>
               <Switch>
                 <Route exact path="/" component={() => <SignIn login={this.login} />} />
-                <Route path="/signup" component={SignUp} />
+                <Route path="/signup" component={() => <SignUp login={this.login} />}  />
                 <Route path="/passwordRecovery" component={PasswordRecovery} />
               </Switch>
             </div>  
@@ -73,11 +73,14 @@ class App extends Component {
                   <NewPost showNewPost={this.showNewPost} />
               }
               <Switch>
+
                 <Route exact path="/" component={Timeline} />
                 <Route path="/post/:id" component={Post} />
                 <Route path="/profile" component={Profile}  />
                 <Route path="/profile/:id" component={Profile} />
-              </Switch>
+                
+              }
+                </Switch>
             </div>  
         }
         <Footer /> 

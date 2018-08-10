@@ -1,25 +1,55 @@
 import React,{Component} from 'react'
-import {upload} from './../services/firebase'
+import {upload, create, userInfo} from './../services/firebase'
 class NewPost extends Component{
   constructor(){
     super();
     this.state = {
       file:'',
       imagen:'',
-      desc:''
+      desc:'',
+      user:'',
+      email:''
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.hideNewPost = this.hideNewPost.bind(this)
     this.handleFileChange = this.handleFileChange.bind(this)
   }
+  componentDidMount(){
+    userInfo
+    .then(user=>{
+      this.setState({
+        user: user.email.split("@")[0],
+        email: user.email
+      })
+    })
+  }
   handleSubmit(e){
     e.preventDefault();
-    upload(this.state.file)
-    .then(()=>{
-      this.setState({
-        imagen:''
-      })
+      upload(this.state.file)
+      .then(snapshot=>{
+        snapshot.ref.getDownloadURL()
+        .then(downloadURL=>{
+          let post = {
+            url:downloadURL,
+            user:this.state.user,
+            email:this.state.email,
+            desc:this.state.desc,
+            date: new Date().toLocaleDateString("en-US",{weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})
+          }
+          create('posts',post)
+          .then(()=>{
+            this.setState({
+              file:'',
+              imagen:'',
+              desc:''
+            })
+            this.hideNewPost()
+        })
+        })
+        
+        
+        
     })
   }
   handleChange(e){
@@ -73,7 +103,7 @@ class NewPost extends Component{
                     </div>    
                     <div className="col-6">
                       <textarea 
-                        name="description" 
+                        name="desc" 
                         className="form-control" 
                         placeholder="Descripción" 
                         onChange={this.handleChange}
