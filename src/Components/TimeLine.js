@@ -36,7 +36,7 @@ class Timeline extends Component{
         this.state.posts.map(post=>{
           return(
             <article key={post.id}>
-              <h2><Link to={"/profile"+post.userEmail}><i className="icon-user"></i>{post.user}</Link></h2>
+              <h2><Link to={"/profile/"+post.email}><i className="icon-user"></i>{post.user}</Link></h2>
               <figure>
                 <Link to={"/post/"+post.id}><img src={post.url} width="400" alt="imagen"/></Link>
               </figure>

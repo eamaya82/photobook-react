@@ -1,18 +1,37 @@
 import React,{Component} from 'react'
+import {Link} from 'react-router-dom'
+import {read} from './../services/firebase'
 
 class Post extends Component{
+  constructor(){
+    super();
+    this.state = {
+      post:{}
+    }
+  }
+  componentDidMount(){
+    window.scrollTo(0,0)
+    const postId = this.props.match.params.id
+    read('posts',postId)
+    .on('value',snapshot=>{
+      console.log(snapshot.val())
+      this.setState({
+        post:snapshot.val()
+      })
+    })
+  }
   render(){
     return (
       <section className="timeline">
       <article>
-        <h2><i className="icon-user"></i>lorem ipsum</h2>
+        <h2><Link to={"/profile/"+this.state.post.email}><i className="icon-user"></i>{this.state.post.user}</Link></h2>       
         <figure>
-          <img src="https://dummyimage.com/400x400/000/fff" alt="imagen"/>
+          <img src={this.state.post.url} width="400" alt="imagen"/>
         </figure>
         <section>
           <p className="like"><i className="icon-heart"></i> 10 Me gusta</p>
-          <p className="desc">Lorem ipsum dolor sit amet consectetur adipiscing elit gravida rhoncus, mi porttitor dictum nascetur nullam venenatis sociosqu orci, leo tincidunt aliquet condimentum platea litora torquent facilisi. </p>
-          <p className="date">Dec 15, 2018</p>
+          <p className="desc">{this.state.post.desc}</p>
+          <p className="date">{this.state.post.date}</p>
         </section>
           <section>
             <form className="form-row">
@@ -30,16 +49,6 @@ class Post extends Component{
             </form>
           </section>
             <ul>
-              <li>
-                <p className="comment-user"><i className="icon-user"></i> nombreUsuario</p>
-                <p className="comment-desc"><i className="icon-bubble"></i> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus saepe suscipit iusto quas excepturi magni, harum nihil, inventore architecto non rerum eveniet dolorem autem est molestiae consequuntur. Esse, tenetur</p>
-                <p className="comment-date">Dec 20, 2018</p>
-              </li>
-              <li>
-                <p className="comment-user"><i className="icon-user"></i> nombreUsuario</p>
-                <p className="comment-desc"><i className="icon-bubble"></i> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus saepe suscipit iusto quas excepturi magni, harum nihil, inventore architecto non rerum eveniet dolorem autem est molestiae consequuntur. Esse, tenetur</p>
-                <p className="comment-date">Dec 20, 2018</p>
-              </li>
               <li>
                 <p className="comment-user"><i className="icon-user"></i> nombreUsuario</p>
                 <p className="comment-desc"><i className="icon-bubble"></i> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus saepe suscipit iusto quas excepturi magni, harum nihil, inventore architecto non rerum eveniet dolorem autem est molestiae consequuntur. Esse, tenetur</p>

@@ -23,16 +23,15 @@ export function logout(){
 export function signup(user){
     return authentication.createUserWithEmailAndPassword(user.email,user.password)
 }
-export let isAuth = new Promise((resolve, reject) => {
+export let userInfo = new Promise((resolve, reject) => {
   authentication.onAuthStateChanged(user=>{
-     return resolve(!!user)
+    if(user != null)
+        return resolve(user)
+    else
+        return reject(null)
   })
 })
-export let userInfo = new Promise((resolve, reject) => {
-    authentication.onAuthStateChanged(user=>{
-       return resolve(user)
-    })
-  });
+
 export function upload(file){
     return storage.ref('/images').child(Date.now().toString()).put(file)
 }
