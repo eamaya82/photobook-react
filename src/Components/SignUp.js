@@ -1,61 +1,78 @@
 import React,{Component} from 'react'
 import {Link, Redirect} from 'react-router-dom'
-import {signup, create} from './../services/firebase'
+import {signup} from './../services/firebase'
+import {create} from './../services/api'
 
 class SignUp extends Component{
   constructor(){
     super();
     this.state = {
-      name: '',
+      firstname: '',
       lastname: '',
       email: '',
       password: '',
       confirmPassword: '',
       terms: '',
       error:'',
-      isAuth: false
+      isAuth: false,
+      checked:false
     }
+    this.handleCheck = this.handleCheck.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
+  handleCheck(){
+    this.setState({
+      checked: !this.state.checked
+    })
+  }
   handleSubmit(e){
     e.preventDefault();
-    if(this.state.password===this.state.confirmPassword){
-      const user = {
-        name: this.state.name,
-        lastname: this.state.lastname,
-        email: this.state.email
-      }
-      signup({email: this.state.email,password: this.state.password})
-      .then(()=>{
-        create('users',user)
-        .then(()=>{
-          this.setState({
-            name: '',
-            lastname: '',
-            email: '',
-            password: '',
-            confirmPassword: '',
-            terms: '',
-            error:'',
-            isAuth:true
+    if(this.state.checked){
+        if(this.state.password===this.state.confirmPassword){
+          const user = {
+            firstname: this.state.firstname,
+            lastname: this.state.lastname,
+            email: this.state.email,
+            password:this.state.password,
+            description:"Bio",
+            photo_url:"http://google.com"
+          }
+          signup(user)
+          .then(()=>{
+            create('users',user)
+            .then(()=>{
+              this.setState({
+                firstname: '',
+                lastname: '',
+                email: '',
+                password: '',
+                confirmPassword: '',
+                terms: '',
+                error:'',
+                isAuth:true
+              })
+              this.props.login(true)
+              window.scrollTo(0,0)
+            })
+            
           })
-          this.props.login(true)
-          window.scrollTo(0,0)
-        })
-        
-      })
-      .catch(error=>{
-        console.log(error)
+          .catch(error=>{
+            console.log(error)
+            this.setState({
+              error:'Ocurrió un error inesperado. Por favor verifique sus datos.'
+            })
+          })
+        }else{
+          this.setState({
+            error:'Claves no coinciden'
+          })
+        }
+      }else{
         this.setState({
-          error:'Ocurrió un error inesperado'
+          error:'Debe aceptar los términos'
         })
-      })
-    }else{
-      this.setState({
-        error:'Claves no coinciden'
-      })
-    }
+      }    
     window.scrollTo(0, 0)
   }
   handleChange(e){
@@ -80,11 +97,12 @@ class SignUp extends Component{
           }
           <div className="form-group">   
             <label 
-              htmlFor="name">Nombre</label>
+              htmlFor="firstname">Nombre</label>
             <input 
               type="text"
-              name="name"
-              id="name"
+              name="firstname"
+              id="firstname"
+              required
               className="form-control"
               onChange={this.handleChange}
             />
@@ -96,6 +114,7 @@ class SignUp extends Component{
               type="text"
               name="lastname"
               id="lastname"
+              required
               className="form-control"
               onChange={this.handleChange}
             />
@@ -107,6 +126,7 @@ class SignUp extends Component{
               type="email"
               name="email"
               id="email"
+              required
               className="form-control"
               onChange={this.handleChange}
             />
@@ -132,6 +152,7 @@ class SignUp extends Component{
               name="confirmPassword"
               id="confirmPassword"
               minLength="6"
+              required
               className="form-control"
               onChange={this.handleChange}
             />
@@ -142,7 +163,8 @@ class SignUp extends Component{
               <input 
                 type="checkbox"
                 name="terms"
-                onChange={this.handleChange}
+                checked={this.state.checked}
+                onChange={this.handleCheck}
               />
               Acepto términos y condiciones
             </label>
