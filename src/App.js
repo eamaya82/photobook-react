@@ -39,21 +39,10 @@ class App extends Component {
   login = isAuth => {
   
     if(isAuth){
-      userInfo
-      .then(user=>{
-        this.setState({
-          isAuth: true,
-          email:user.email,
-          user:user.email.split("@")[0]
-        })
-      })
+      window.location = '/'
     }else{
-      this.setState({
-        isAuth: false,
-        email:'',
-        user:''
-      })
       logout()
+      window.location = '/'
     } 
       
   }

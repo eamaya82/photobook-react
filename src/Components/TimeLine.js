@@ -1,6 +1,7 @@
 import React,{Component} from 'react'
 import {Link} from 'react-router-dom'
-import {list} from './../services/firebase'
+import {connect} from 'react-redux'
+import {listPost} from './../actions/post'
 
 class Timeline extends Component{
   constructor(){
@@ -10,30 +11,13 @@ class Timeline extends Component{
     }
   }
   componentDidMount(){
-    list('posts')
-    .on('value',snapshot=>{
-      let tmp=[]
-      let posts=snapshot.val()
-      for(let post in posts){
-        tmp.push({
-          id:post,
-          user:posts[post].user,
-          email:posts[post].email,
-          url:posts[post].url,
-          desc:posts[post].desc,
-          date:posts[post].date
-        })
-      }
-      this.setState({
-        posts: tmp
-      })
-    })
+    this.props.listPost()
   }
   render(){
     return (
       <section className="timeline">
       {
-        this.state.posts.map(post=>{
+        this.props.posts.map(post=>{
           return(
             <article key={post.id}>
               <h2><Link to={"/profile/"+post.email}><i className="icon-user"></i>{post.user}</Link></h2>
@@ -54,4 +38,16 @@ class Timeline extends Component{
   }
 
 }
-export default Timeline
+const mapStatetoProps = state =>{
+  const {post} = state
+  return {
+    posts:post.posts
+  }
+}
+const mapDispatchToProps = dispatch =>{
+  return{
+    listPost:()=>dispatch(listPost())
+  }
+}
+
+export default connect(mapStatetoProps, mapDispatchToProps)(Timeline)

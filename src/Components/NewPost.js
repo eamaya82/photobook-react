@@ -1,5 +1,8 @@
 import React,{Component} from 'react'
-import {upload, create, userInfo} from './../services/firebase'
+import {connect} from 'react-redux'
+import {userInfo} from './../services/firebase'
+import {createPost} from './../actions/post'
+
 class NewPost extends Component{
   constructor(){
     super();
@@ -26,31 +29,16 @@ class NewPost extends Component{
   }
   handleSubmit(e){
     e.preventDefault();
-      upload(this.state.file)
-      .then(snapshot=>{
-        snapshot.ref.getDownloadURL()
-        .then(downloadURL=>{
-          let post = {
-            url:downloadURL,
-            user:this.state.user,
-            email:this.state.email,
-            desc:this.state.desc,
-            date: new Date().toLocaleDateString("en-US",{weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})
-          }
-          create('posts',post)
-          .then(()=>{
-            this.setState({
-              file:'',
-              imagen:'',
-              desc:''
-            })
-            this.hideNewPost()
-        })
-        })
-        
-        
-        
-    })
+    let post = {
+      file:this.state.file,
+      url:'',
+      user:this.state.user,
+      email:this.state.email,
+      desc:this.state.desc,
+      date: new Date().toLocaleDateString("en-US",{weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})
+    }
+    this.props.createPost(post)
+    this.hideNewPost()
   }
   handleChange(e){
     this.setState({
@@ -126,4 +114,11 @@ class NewPost extends Component{
   }
 
 }
-export default NewPost
+
+const mapDispatchToProps = dispatch =>{
+  return{
+    createPost:(obj)=>dispatch(createPost(obj))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(NewPost)
